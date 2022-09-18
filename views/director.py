@@ -15,4 +15,4 @@ class DirectorView(Resource):
 @director_ns.route('/<int:uid>')
 class DirectorViews(Resource):
     def get(self, uid):
-        return director_schema.dump([director_service.get_director_by_id(uid=uid)]), 200
+        return director_schema.dump(director_service.get_director_by_id(uid=uid)), 200

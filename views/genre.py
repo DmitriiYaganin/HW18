@@ -15,4 +15,4 @@ class GenreView(Resource):
 @genre_ns.route('/<int:uid>')
 class GenreViews(Resource):
     def get(self, uid):
-        return genre_schema.dump([genre_service.get_director_by_id(uid=uid)]), 200
+        return genre_schema.dump(genre_service.get_director_by_id(uid=uid)), 200

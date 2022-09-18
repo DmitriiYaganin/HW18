@@ -16,7 +16,7 @@ class MovieView(Resource):
                 movie_service.get_movie_by_kwargs(**args)
             ), 200
 
-        return movie_schema.dump(movie_service.get_movies()), 200
+        return movie_schema.dump(movie_service.get_movie_by_kwargs()), 200
 
     def post(self):
         if movie_service.create_movie(**flask.request.json):
@@ -28,16 +28,16 @@ class MovieView(Resource):
 @movie_ns.route('/<int:uid>')
 class MovieViews(Resource):
     def get(self, uid):
-        return movie_schema.dump([movie_service.get_director_by_id(uid=uid)]), 200
+        return movie_schema.dump(movie_service.get_director_by_id(uid=uid)), 200
 
-    def put(self, uid):
-        if movie_service.create_movie(uid=uid, **flask.request.json):
+    def put(self):
+        if movie_service.create_movie(**flask.request.json):
             return "Фильм обновлён", 200
         else:
             return "Ошибка обновления фильма", 200
 
     def delete(self, uid):
-        if movie_service.create_movie(uid):
+        if movie_service.delete_movies(uid):
             return "Фильм удалён", 200
         else:
             return "Ошибка удаления фильма", 200

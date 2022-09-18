@@ -47,9 +47,3 @@ class MovieDAO:
             print(e)
             self.session.rollback()
             return False
-
-
-
-
-
-

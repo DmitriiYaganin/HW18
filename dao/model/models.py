@@ -25,4 +25,4 @@ class Movie(db.Model):
     director_id = db.Column(Integer, db.ForeignKey(f"{Director.__tablename__}.id"))
     genre_id = db.Column(Integer, db.ForeignKey(f"{Genre.__tablename__}.id"))
     director = db.relationship("Director")
-    genre = db.relationship("Director")
+    genre = db.relationship("Genre")
